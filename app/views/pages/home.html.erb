@@ -1,0 +1,28 @@
+<h1>Welcome to Jukebox</h1>
+
+<h4>Please Subscribe and join <%= Subscriber.count %> subscribers: </h4>
+
+<%= form_for @subscriber do |form| %>
+	
+	<% if @subscriber.errors.any? %>
+		<div class="error_explanation">
+		  <h2><%= pluralize(@subscriber.errors.count, "error") %> prevented this record from being saved:</h2>
+		  <ul>
+		  <% @subscriber.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		</div>
+		<% end %>
+		<%= notice %>
+	<br>
+
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+	<br>
+	<%= form.label :email %>
+	<%= form.text_field :email %>
+	<br>
+	<%= form.submit "Submit" %>
+
+<% end %>
